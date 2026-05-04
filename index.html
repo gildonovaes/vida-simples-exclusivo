@@ -25,7 +25,7 @@
         .btn { 
             display: block; 
             width: 100%; 
-            padding: 18px 0; 
+            padding: 18px 10px; 
             margin: 15px auto; 
             border: none; 
             border-radius: 10px; 
@@ -37,16 +37,16 @@
             box-sizing: border-box;
         }
         
-        .btn-ws { background: #25D366; color: white; }
+        .btn-ws { background: #25D366; color: white; line-height: 1.2; }
         .btn-yt { background: #ff0000; color: white; display: none; }
         
+        .small-text { font-size: 12px; display: block; font-weight: normal; opacity: 0.9; margin-top: 4px; }
         .alert { background: #331a1a; color: #ff4444; padding: 12px; font-size: 13px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ff0000; }
         .instrucao-final { color: #ffcc00; font-weight: bold; display: none; margin-top: 10px; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <!-- COOKIE INVISÍVEL SHOPEE -->
     <iframe src="https://s.shopee.com.br/9KecZ6ir9U?share_channel_code=1" style="width:0;height:0;border:0;display:none;"></iframe>
 
     <div class="container">
@@ -62,7 +62,8 @@
 
             <div id="etapa-partilha">
                 <button class="btn btn-ws" onclick="fazerPartilha()">
-                    1. COMPARTILHAR NO WHATSAPP
+                    1. COMPARTILHE PARA 3 PESSOAS
+                    <span class="small-text">WhatsApp</span>
                 </button>
             </div>
 
@@ -85,12 +86,9 @@
             const linkAtual = window.location.href;
             window.location.href = `whatsapp://send?text=${msgTextoZap}${linkAtual}`;
 
-            // Quando o usuário volta do WhatsApp para o navegador
             window.onfocus = function() {
-                // Mensagem de espera para evitar o "abre e fecha"
                 document.getElementById('status-msg').innerHTML = "⏳ Validando compartilhamento... aguarde.";
                 
-                // Só libera o botão após 5 segundos de espera real na página
                 setTimeout(() => {
                     document.getElementById('status-msg').innerHTML = "✅ LIBERADO! Siga a instrução abaixo:";
                     document.getElementById('status-msg').style.color = "#25D366";
