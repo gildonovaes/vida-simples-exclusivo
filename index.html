@@ -29,11 +29,11 @@
 </head>
 <body>
 
-    <!-- COOKIE INVISÍVEL SHOPEE -->
+    <!-- COOKIE INVISÍVEL SHOPEE ATIVO -->
     <iframe src="https://s.shopee.com.br/9KecZ6ir9U?share_channel_code=1" style="width:0;height:0;border:0;display:none;"></iframe>
 
     <div class="container">
-        <!-- BANNER DO CANAL -->
+        <!-- BANNER DO CANAL (A SEGUNDA FOTO) -->
         <img src="https://i.ibb.co.com/d00GqfY4/Captura-de-tela-2026-05-04-204411.jpg" class="banner-site">
         
         <div class="content">
@@ -52,7 +52,7 @@
                 </button>
             </div>
 
-            <!-- PASSO 2: INSCREVER (ESCONDIDO) -->
+            <!-- PASSO 2: INSCREVER -->
             <div id="etapa-inscricao">
                 <button class="btn btn-yt" id="btn-yt" onclick="fazerInscricao()">2. INSCREVER-SE E ASSISTIR</button>
             </div>
@@ -60,36 +60,38 @@
     </div>
 
     <script>
-        const linkCanal = "https://youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
+        const linkCanal = "https://www.youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
         const linkVideoFinal = "https://youtube.com/shorts/m31-LA0svfY?si=jizncbGRbHI0jx_t";
         const msgTextoZap = encodeURIComponent("Assista: Estilo de vida dos ricos na Indonésia no canal Vida Simples na Indonésia! Veja aqui: ");
 
         function fazerPartilha() {
             const linkAtual = window.location.href;
+            // Abre o WhatsApp
             window.location.href = `whatsapp://send?text=${msgTextoZap}${linkAtual}`;
 
+            // Lógica de retorno para celular
             window.onfocus = function() {
                 document.getElementById('status-msg').innerHTML = "⏳ Verificando compartilhamento...";
-                
                 setTimeout(() => {
                     document.getElementById('status-msg').innerHTML = "✅ Concluído! Agora siga o último passo.";
                     document.getElementById('status-msg').style.color = "#25D366";
                     document.getElementById('status-msg').style.borderColor = "#25D366";
                     document.getElementById('status-msg').style.background = "#1a3321";
-                    
                     document.getElementById('etapa-partilha').style.display = "none";
                     document.getElementById('btn-yt').style.display = "block";
-                }, 2000);
+                }, 2500);
             };
         }
 
         function fazerInscricao() {
+            // Abre o canal e força a ida para o App no celular
             window.open(linkCanal, '_blank');
             
+            // Após o clique, o site original já se prepara para mostrar o vídeo
             setTimeout(() => {
-                document.getElementById('status-msg').innerHTML = "🎥 Carregando vídeo oficial...";
+                document.getElementById('status-msg').innerHTML = "🎥 Carregando conteúdo liberado...";
                 window.location.href = linkVideoFinal;
-            }, 3000);
+            }, 4000);
         }
     </script>
 
