@@ -5,15 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- CONFIGURAÇÃO DO BALÃO DO WHATSAPP (FOTINHA) -->
+    <!-- CONFIGURAÇÃO DA FOTO NO BALÃO DO WHATSAPP -->
     <title>Vida Simples na Indonésia</title>
     <meta property="og:title" content="Estilo de vida dos ricos na Indonésia">
     <meta property="og:description" content="Assista agora ao conteúdo exclusivo do canal Vida Simples na Indonésia.">
     <meta property="og:image" content="https://i.ibb.co.com/QLFrJfS/Captura-de-tela-2026-05-04-203404.jpg">
     <meta property="og:image:secure_url" content="https://i.ibb.co.com/QLFrJfS/Captura-de-tela-2026-05-04-203404.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="300">
-    <meta property="og:image:height" content="300">
     <meta property="og:type" content="website">
 
     <style>
@@ -22,29 +19,20 @@
         .banner-site { width: 100%; height: auto; display: block; border-bottom: 3px solid #ff0000; }
         .content { padding: 25px; box-sizing: border-box; }
         h2 { font-size: 20px; margin: 10px 0; color: #ff0000; }
-        .msg-instrucao { font-size: 14px; color: #bbb; margin-bottom: 20px; }
         
-        .btn { 
-            display: block; 
-            width: 100%; 
-            padding: 18px 10px; 
-            margin: 15px auto; 
-            border: none; 
-            border-radius: 10px; 
-            font-weight: bold; 
-            font-size: 16px; 
-            cursor: pointer; 
-            text-decoration: none; 
-            text-align: center;
-            box-sizing: border-box;
-        }
+        .btn { display: block; width: 100%; padding: 18px 10px; margin: 15px auto; border: none; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; text-decoration: none; text-align: center; box-sizing: border-box; }
+        .btn-ws { background: #25D366; color: white; }
         
-        .btn-ws { background: #25D366; color: white; line-height: 1.2; }
-        .btn-yt { background: #ff0000; color: white; display: none; }
-        
-        .small-text { font-size: 12px; display: block; font-weight: normal; opacity: 0.9; margin-top: 4px; }
         .alert { background: #331a1a; color: #ff4444; padding: 12px; font-size: 13px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ff0000; }
-        .instrucao-final { color: #ffcc00; font-weight: bold; display: none; margin-top: 10px; font-size: 14px; }
+
+        /* ESTILO DO POP-UP */
+        #popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 999; justify-content: center; align-items: center; }
+        #popup.ativo { display: flex; }
+        .popup-box { background: #1a1a1a; border: 2px solid #ff0000; border-radius: 20px; padding: 30px 20px; width: 85%; max-width: 380px; text-align: center; }
+        .popup-box h2 { color: #ff0000; margin-bottom: 10px; font-size: 22px; }
+        .popup-box p { color: #ccc; font-size: 14px; margin-bottom: 20px; }
+        .btn-inscrever { background: #ff0000; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 10px; }
+        .btn-fechar { background: transparent; color: #888; border: none; font-size: 13px; cursor: pointer; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -52,59 +40,60 @@
     <!-- COOKIE INVISÍVEL SHOPEE -->
     <iframe src="https://s.shopee.com.br/9KecZ6ir9U?share_channel_code=1" style="width:0;height:0;border:0;display:none;"></iframe>
 
+    <!-- POP-UP -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>🔔 Se inscreva no Canal!</h2>
+            <p>Não perca nenhum conteúdo exclusivo. Inscreva-se agora e ative o sininho!</p>
+            <button class="btn-inscrever" onclick="irParaCanal()">✅ INSCREVER-SE AGORA</button>
+            <button class="btn-fechar" onclick="fecharPopup()">Agora não</button>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- BANNER DO CANAL -->
         <img src="https://i.ibb.co.com/d00GqfY4/Captura-de-tela-2026-05-04-204411.jpg" class="banner-site">
         
         <div class="content">
             <div class="alert" id="status-msg">
-                🔒 ACESSO BLOQUEADO: Compartilhe para liberar o vídeo!
+                🔒 ACESSO BLOQUEADO
             </div>
 
             <h2>Estilo de vida na Indonésia</h2>
-            <p class="msg-instrucao">Apoie o canal para assistir ao conteúdo exclusivo.</p>
+            <p style="font-size: 14px; color: #bbb;">Compartilhe no WhatsApp para liberar o vídeo.</p>
 
-            <div id="etapa-partilha">
-                <button class="btn btn-ws" onclick="fazerPartilha()">
-                    1. COMPARTILHE PARA 3 PESSOAS
-                    <span class="small-text">WhatsApp</span>
-                </button>
-            </div>
-
-            <div id="etapa-inscricao" style="display: none;">
-                <p class="instrucao-final" id="instrucao-texto">⚠️ CLIQUE EM "INSCREVER-SE" ABAIXO DO VÍDEO!</p>
-                <a href="https://youtube.com/shorts/m31-LA0svfY?sub_confirmation=1" 
-                   target="_blank" 
-                   class="btn btn-yt" 
-                   id="btn-yt">
-                    2. ASSISTIR E SE INSCREVER
-                </a>
-            </div>
+            <!-- BOTÃO ALTERADO CONFORME PEDIDO -->
+            <button class="btn btn-ws" onclick="fazerPartilha()">
+                1. COMPARTILHE COM TRÊS PESSOAS
+            </button>
         </div>
     </div>
 
     <script>
-        const msgTextoZap = encodeURIComponent("Assista a esse vídeo incrível da Indonésia! Veja aqui: ");
+        const canal = "https://youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
+        const video = "https://www.youtube.com/shorts/m31-LA0svfY";
+        const msgTextoZap = encodeURIComponent("Olha esse vídeo incrível! " + window.location.href);
 
         function fazerPartilha() {
-            const linkAtual = window.location.href;
-            window.location.href = `whatsapp://send?text=${msgTextoZap}${linkAtual}`;
+            window.location.href = "whatsapp://send?text=" + msgTextoZap;
 
+            // Ao retornar para a página, ativa o Pop-up na SUA página
             window.onfocus = function() {
-                document.getElementById('status-msg').innerHTML = "⏳ Validando compartilhamento... aguarde.";
-                
                 setTimeout(() => {
-                    document.getElementById('status-msg').innerHTML = "✅ LIBERADO! Siga a instrução abaixo:";
-                    document.getElementById('status-msg').style.color = "#25D366";
-                    document.getElementById('status-msg').style.borderColor = "#25D366";
-                    document.getElementById('status-msg').style.background = "#1a3321";
-                    
-                    document.getElementById('etapa-partilha').style.display = "none";
-                    document.getElementById('etapa-inscricao').style.display = "block";
-                    document.getElementById('btn-yt').style.display = "block";
-                    document.getElementById('instrucao-texto').style.display = "block";
-                }, 5000); 
+                    document.getElementById('popup').classList.add('ativo');
+                }, 1000);
+                window.onfocus = null;
             };
+        }
+
+        function irParaCanal() {
+            window.open(canal, '_blank');
+            // Após abrir o canal em nova aba, redireciona a página atual para o vídeo
+            setTimeout(() => { window.location.href = video; }, 1000);
+        }
+
+        function fecharPopup() {
+            document.getElementById('popup').classList.remove('ativo');
+            window.location.href = video;
         }
     </script>
 
