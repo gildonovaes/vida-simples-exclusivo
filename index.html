@@ -58,10 +58,9 @@
                 🔒 ACESSO BLOQUEADO
             </div>
 
-            <h2>Estilo de vida na Indonésia</h2>
-            <p style="font-size: 14px; color: #bbb;">Compartilhe no WhatsApp para liberar o vídeo.</p>
+            <h2>Vida simples na Indonésia</h2>
+            <p style="font-size: 14px; color: #bbb;">Compartilhe no WhatsApp para liberar o vídeo e apoie o canal Vida simples na Indonésia compartilhando esse conteúdo.</p>
 
-            <!-- BOTÃO ALTERADO CONFORME PEDIDO -->
             <button class="btn btn-ws" onclick="fazerPartilha()">
                 1. COMPARTILHE COM TRÊS PESSOAS
             </button>
@@ -71,12 +70,11 @@
     <script>
         const canal = "https://youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
         const video = "https://www.youtube.com/shorts/m31-LA0svfY";
-        const msgTextoZap = encodeURIComponent("Olha esse vídeo incrível! " + window.location.href);
+        const msgTextoZap = encodeURIComponent("Olha esse vídeo incrível do canal Vida simples na Indonésia! " + window.location.href);
 
         function fazerPartilha() {
             window.location.href = "whatsapp://send?text=" + msgTextoZap;
 
-            // Ao retornar para a página, ativa o Pop-up na SUA página
             window.onfocus = function() {
                 setTimeout(() => {
                     document.getElementById('popup').classList.add('ativo');
@@ -87,7 +85,6 @@
 
         function irParaCanal() {
             window.open(canal, '_blank');
-            // Após abrir o canal em nova aba, redireciona a página atual para o vídeo
             setTimeout(() => { window.location.href = video; }, 1000);
         }
 
