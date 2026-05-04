@@ -1,17 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- CONFIGURAÇÃO DO BALÃO DO WHATSAPP (A FOTINHA) -->
+    <!-- CONFIGURAÇÃO DO BALÃO DO WHATSAPP (FOTINHA) -->
     <title>Vida Simples na Indonésia</title>
     <meta property="og:title" content="Estilo de vida dos ricos na Indonésia">
     <meta property="og:description" content="Assista agora ao conteúdo exclusivo do canal Vida Simples na Indonésia.">
     <meta property="og:image" content="https://i.ibb.co.com/QLFrJfS/Captura-de-tela-2026-05-04-203404.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
     <meta property="og:type" content="website">
 
     <style>
@@ -35,7 +35,6 @@
     <iframe src="https://s.shopee.com.br/9KecZ6ir9U?share_channel_code=1" style="width:0;height:0;border:0;display:none;"></iframe>
 
     <div class="container">
-        <!-- BANNER DO CANAL -->
         <img src="https://i.ibb.co.com/d00GqfY4/Captura-de-tela-2026-05-04-204411.jpg" class="banner-site">
         
         <div class="content">
@@ -60,8 +59,8 @@
     </div>
 
     <script>
-        // Formato de link que melhor dispara a caixa de inscrição no celular
-        const linkCanal = "https://www.youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
+        // URL de confirmação direta
+        const urlInscricao = "https://www.youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
         const linkVideoFinal = "https://youtube.com/shorts/m31-LA0svfY?si=jizncbGRbHI0jx_t";
         const msgTextoZap = encodeURIComponent("Assista: Estilo de vida dos ricos na Indonésia no canal Vida Simples na Indonésia! Veja aqui: ");
 
@@ -83,13 +82,14 @@
         }
 
         function fazerInscricao() {
-            // Abre o YouTube. O parâmetro sub_confirmation=1 tenta forçar a caixa de inscrição.
-            window.open(linkCanal, '_blank');
+            // No celular, abrimos o link de confirmação em uma nova aba
+            // O navegador do celular tentará abrir o App do YouTube já com o comando de inscrição
+            window.open(urlInscricao, '_blank');
             
+            // Após 5 segundos (tempo para o App abrir e mostrar o balão), redirecionamos a aba principal para o vídeo
             setTimeout(() => {
-                document.getElementById('status-msg').innerHTML = "🎥 Abrindo vídeo oficial...";
                 window.location.href = linkVideoFinal;
-            }, 4000);
+            }, 5000);
         }
     </script>
 
