@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- CONFIGURAÇÃO DO BALÃO DO WHATSAPP -->
+    <!-- CONFIGURAÇÃO DO BALÃO DO WHATSAPP (A FOTINHA) -->
     <title>Vida Simples na Indonésia</title>
     <meta property="og:title" content="Estilo de vida dos ricos na Indonésia">
     <meta property="og:description" content="Assista agora ao conteúdo exclusivo do canal Vida Simples na Indonésia.">
     <meta property="og:image" content="https://i.ibb.co.com/QLFrJfS/Captura-de-tela-2026-05-04-203404.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
 
     <style>
@@ -29,11 +31,11 @@
 </head>
 <body>
 
-    <!-- COOKIE INVISÍVEL SHOPEE ATIVO -->
+    <!-- COOKIE INVISÍVEL SHOPEE -->
     <iframe src="https://s.shopee.com.br/9KecZ6ir9U?share_channel_code=1" style="width:0;height:0;border:0;display:none;"></iframe>
 
     <div class="container">
-        <!-- BANNER DO CANAL (A SEGUNDA FOTO) -->
+        <!-- BANNER DO CANAL -->
         <img src="https://i.ibb.co.com/d00GqfY4/Captura-de-tela-2026-05-04-204411.jpg" class="banner-site">
         
         <div class="content">
@@ -44,7 +46,6 @@
             <h2>Estilo de vida dos ricos na Indonésia</h2>
             <p class="msg-instrucao">Apoie o canal <span class="negrito">Vida Simples na Indonésia</span> para assistir ao conteúdo.</p>
 
-            <!-- PASSO 1: COMPARTILHAR -->
             <div id="etapa-partilha">
                 <button class="btn btn-ws" onclick="fazerPartilha()">
                     1. COMPARTILHAR PARA 3 PESSOAS
@@ -52,7 +53,6 @@
                 </button>
             </div>
 
-            <!-- PASSO 2: INSCREVER -->
             <div id="etapa-inscricao">
                 <button class="btn btn-yt" id="btn-yt" onclick="fazerInscricao()">2. INSCREVER-SE E ASSISTIR</button>
             </div>
@@ -60,16 +60,15 @@
     </div>
 
     <script>
+        // Formato de link que melhor dispara a caixa de inscrição no celular
         const linkCanal = "https://www.youtube.com/@vidasimplesnaindonesia?sub_confirmation=1";
         const linkVideoFinal = "https://youtube.com/shorts/m31-LA0svfY?si=jizncbGRbHI0jx_t";
         const msgTextoZap = encodeURIComponent("Assista: Estilo de vida dos ricos na Indonésia no canal Vida Simples na Indonésia! Veja aqui: ");
 
         function fazerPartilha() {
             const linkAtual = window.location.href;
-            // Abre o WhatsApp
             window.location.href = `whatsapp://send?text=${msgTextoZap}${linkAtual}`;
 
-            // Lógica de retorno para celular
             window.onfocus = function() {
                 document.getElementById('status-msg').innerHTML = "⏳ Verificando compartilhamento...";
                 setTimeout(() => {
@@ -84,12 +83,11 @@
         }
 
         function fazerInscricao() {
-            // Abre o canal e força a ida para o App no celular
+            // Abre o YouTube. O parâmetro sub_confirmation=1 tenta forçar a caixa de inscrição.
             window.open(linkCanal, '_blank');
             
-            // Após o clique, o site original já se prepara para mostrar o vídeo
             setTimeout(() => {
-                document.getElementById('status-msg').innerHTML = "🎥 Carregando conteúdo liberado...";
+                document.getElementById('status-msg').innerHTML = "🎥 Abrindo vídeo oficial...";
                 window.location.href = linkVideoFinal;
             }, 4000);
         }
